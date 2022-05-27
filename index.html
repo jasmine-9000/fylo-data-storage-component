@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>Frontend Mentor | Fylo data storage component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+	<div class="container">
+		<div class="fylo" aria-label="File Menu">
+			<a href="#">
+			<div class="fylo__icon" title="Fylo" aria-label="Fylo Data Storage">
+			</div></a>
+			<div class="fylo__fileicon">
+				<a href="#" class="fylo__newfile" title="New File" aria-label="New File"></a>
+				<a href="#" class="fylo__openfile" title="Open File" aria-label="Open File"></a>
+				<a href="#" class="fylo__uploadfile" title="Upload File" aria-label="Upload File"></a>
+				
+			</div>
+		</div>
+		<div class="data">
+			
+			<div class="data__dataused">
+				You've used <span>815 GB</span> of your storage
+			</div>
+			<div class="data__progressbar">
+				<span class="value"></span>
+				<span class="left">0GB</span>
+				<span class="right">1000GB</span>
+				<!-- 
+				This element doesn't work.
+				<progress max="1000" value="815">
+				
+				</progress>
+				-->
+			</div>
+			
+			<!-- this is a pop-up -->
+			<div class="data__dataleft" aria-labelledby="Amount of data left">
+				<span>185</span> GB left
+			</div>
+			
+		</div>
+	</div>
+
+
+
+
+
+<!--
+  <div class="lower-half">
+	<div class="left-side">
+		You’ve used 815 GB of your storage
+	</div>
+	  185 GB Left
+	  <progress max="100" value="1"></progress>
+	  0 GB
+	  1000 GB
+  </div> 
+  -->
+  
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>

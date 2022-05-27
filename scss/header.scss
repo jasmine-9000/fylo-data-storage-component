@@ -1,0 +1,285 @@
+@import 'variables';
+@import 'fonts';
+
+
+.container {
+	margin: 0;
+	padding:0; 
+	display: flex;
+	// mobile positioning
+	flex-direction: column;
+	align-items: center;
+	// mobile background
+	background-image: url('images/bg-mobile.svg');
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: 100% 52.5vh;
+	height: 100vh; // make it 100% of the view port's height.
+	
+	
+	// tablet positioning
+	@include breakpoint-up(medium) {
+		// tablet and desktop background
+		background-image: url('images/bg-desktop.svg');
+		background-position: 0% 115%;
+		background-size: 100% 55vh;
+		
+		// tablet positioning
+		justify-content: center;
+	}
+	@include breakpoint-up(large) {
+		flex-direction: row;
+	}
+	
+}
+
+.fylo {
+	// desktop:
+	// width: 350px; height: 200px;
+	
+	// mobile: 
+	// width is 100% of the container
+	// height is 200px for both mobile and desktop.
+	
+	width: 100%;
+	max-width: calc(350px - 40px); // max width is desktop width.
+	height: 200px;//calc(200px - 40px);
+	
+	
+	// card style.
+	background-color: $darkBlue;
+	border-radius: 10px 90px 10px 10px;
+	
+	// positioning inside the card.
+	padding-top: 40px;
+	padding-left: 40px;
+	padding-bottom: 40px;
+	
+	// mobile positioning
+	margin-top: 127px;
+	margin-left: 25px;
+	margin-right: 25px;
+	
+	// tablet positioning
+	@include breakpoint-up(medium) {
+		margin-top: 0px;
+		margin-left: 0px;
+		margin-right: 0px;
+		// translate the upload element up a little bit.
+		margin-bottom: 90px;
+		
+	}
+	
+	// desktop positioning
+	@include breakpoint-up(large) {
+		// the desktop design file shows 260px margin-left and 30px margin-right.
+		margin-left: 0%;//260px; this is fixed with the align-items: center from the container element.
+		margin-right: 30px;
+	}
+	
+	
+	&__icon {
+		background-image: url('./images/logo.svg');
+		background-repeat: no-repeat;
+		// original SVG image size: width="135" height="40".
+		width: 135px; height: 40px;
+	}
+	
+	&__fileicon {
+		display: flex;
+		padding-top: 33px;
+		// all children of fileicon (newfile, openfile, and uploadfile) have this style.
+		> * {
+			width: 48px; height: 48px;
+			border-radius: 9px;
+			background-color: $veryDarkBlue;
+			
+			// spacing
+			margin-right: 1rem;
+		}
+	}
+	
+	// each sprite has its won
+	&__newfile {
+		background-image: url('./images/icon-document.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		//width: 20px; height: 24px;
+	}
+	&__openfile {
+		background-image: url('./images/icon-folder.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		//width: 24px; height: 20px;
+	}
+	&__uploadfile {
+		background-image: url('./images/icon-upload.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		//width: 24px; height: 16px;
+	}
+}
+
+.data {
+	position: relative;
+	background-color: $darkBlue;
+	border-radius: 9px;
+	// desktop dimensions
+	//width: 540px; height: 154px;
+	width: 90%;
+	max-width: calc(540px - 38px);
+	height: calc(154px - 42px);
+	
+	// internal styling
+	padding-top: 42px;
+	padding-left: 0px;
+	// padding-left: 38px;
+	padding-bottom: 60px;
+	
+	// mobile positioning
+	margin-left: 25px; // ensure there is at minimum 25px of margin on left and right..
+	margin-right: 25px; // ensure there is at minimum 25px of margin on left and right..
+	margin-top: 16px;
+	text-align: center;
+
+	
+	// tablet and desktop positioning
+	@include breakpoint-up(medium) {
+		width: 100%;
+		margin: 0;
+		text-align: left;
+		padding-left: 38px;
+	}
+	
+	&__dataused {
+		font-weight: 400;
+		> span {
+			font-weight: 700;
+		}
+	}
+	
+	&__progressbar {
+		// styling
+		border-radius: 0.625rem;//10px;
+		width: 80%;
+		height: 1.25rem;//20px;
+		background-color: $veryDarkBlue;
+		
+			
+		// mobile positioning
+		display: flex;
+		align-items: center;
+		margin: 0 auto;
+		
+		position: relative;
+		
+		// tablet and desktop positioning
+		@include breakpoint-up(medium) {
+			width: 90%;
+			margin-left: 0;
+			margin-right: 40px;
+		}
+		
+		
+		// the value of how much storage you have left.
+		> span.value {
+			width: 81.5%;
+			height: 14px;
+			border-radius: 10px;
+			background-image: linear-gradient(to right, $gradientFrom, $gradientTo);
+			margin-left: 3px;
+		}
+		
+		
+		// minimum storage
+		> span.left {
+			position: absolute;
+			top: 125%;
+			font-size: 8pt;
+			font-weight: 400;
+			color: $paleBlue;
+		}
+		// maximum storage
+		> span.right {
+			position: absolute;
+			top: 125%;
+			right: 0%;
+			font-size: 8pt;
+			font-weight: 400;
+			color: $paleBlue;
+		}
+		
+		// this is the circle at the very end.
+		&::after {
+			// styling
+			content: '';
+			width: 10px; height: 10px;
+			background-color: white;
+			border-radius: 50%;
+			// positioning
+			transform: translateX(-125%);
+		}
+		
+		
+	}
+	// the popup that tells you how much data you have left.
+	&__dataleft {
+		// styling
+		width: 179px;
+		height: 72px;
+		background-color: white;
+		color: $grayishBlue;
+		text-align: center;
+		border-radius: 10px;
+		font-weight: 400;
+		font-size: 12px;
+	
+		// mobile positioning
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+		transform: translateY(50%);
+		margin: 0 auto;
+		position: relative;
+
+
+		// tablet and desktop positioning
+		@include breakpoint-up(medium) {
+			position: absolute;
+			transform: none;
+			top: -50%;
+			right: 3%;
+			// to add the little triangle thing: 
+			border-bottom-right-radius: 0px;
+		}
+		
+		// the actual amount of data left.
+		> span {
+			font-size: 32px;
+			font-weight: 700;
+			color: $veryDarkBlue;
+					
+		}
+		
+		// the little triangle thing at the end
+		&::after {
+			content: '';
+			width: 0; height: 0;
+			border-left: 22px solid transparent;
+			border-right: 22px solid white;
+			border-bottom: 22px solid transparent;
+			
+			// positioning
+			position: absolute;
+			top: 70px;
+			right: 0px;
+			
+			// hide this element on mobile.
+			@include breakpoint-down(medium) {
+				display: none;
+			}
+		}
+	}
+	
+}

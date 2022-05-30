@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "watch_sass": "node-sass --include-path scss scss/style.scss --output ./ --watch ",
-    "compile_sass": "node-sass --include-path scss scss/style.scss --output ./"
+    "compile_sass": "node-sass --include-path scss scss/style.scss --output ./",
+    "start": "node app.js",
+    "startdev": "nodemon app.js"
   },
   "keywords": [
     "Challenge",
@@ -15,7 +17,10 @@
   "author": "Jasmine Kerr",
   "license": "MIT",
   "devDependencies": {
-    "express": "^4.17.1",
-    "node-sass": "^4.14.1"
+    "express": "^4.17.1"
+  },
+  "dependencies": {
+    "node-sass": "^7.0.1",
+    "nodemon": "^2.0.16"
   }
 }
